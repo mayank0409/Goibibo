@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/mayank0409/Goibibo/issues"
   },
-  "homepage": "https://github.com/mayank0409/Goibibo#readme"
+  "homepage": "https://github.com/mayank0409/Goibibo#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }

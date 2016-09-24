@@ -8,9 +8,25 @@
     background-color: whitesmoke;
 }
 .search-bar {
-
+    height:64px;
 }
 
 .search-bar-background{
     background-color: #2d67b2;
+}
+.search-icon{
+    margin-top: -13px;
+    margin-left: 2px;
+}
+.search-circle-div{
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 24%;
+    width: 136px;
+    height: 46px;
+    padding: 0px 0px 0px 0px;
+    margin-top: 10px;
+}
+.search-circle-div:hover{
+    background-color: darkblue;
 }

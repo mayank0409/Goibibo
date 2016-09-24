@@ -4,6 +4,7 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="custom/css/goibibo.css">
+    <link type="text/css" rel="stylesheet" href="custom/font-awesome/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="main.js"></script>
@@ -22,7 +23,26 @@
                 </div>
                 <div class="col s10 m10 l10 search-bar-background">
                     <div class="search-bar">
-                        hello
+                            <div class="row">
+                                <div class="input-field col s3">
+                                    <i class="fa fa-bus prefix"></i><i class="fa fa-arrow-left prefix" style="margin-left: 32px; font-size: 14px;"></i>
+                                    <input placeholder="source" id="source" type="text" class="validate">
+                                </div>
+                                <div class="input-field col s3">
+                                    <i class="fa fa-bus prefix"></i><i class="fa fa-arrow-right prefix" style="margin-left:32px; font-size: 14px;"></i>
+                                    <input id="destination" type="text" class="validate" placeholder="destination">
+                                </div>
+                                <div class="input-field col s3">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <input type="date" class="datepicker" placeholder="journey_date">
+                                </div>
+                                <div class="input-field col s3 ">
+                                    <div class="search-circle-div">
+                                        <div style="margin-top: -11px;margin-left: 9px;"><i class="fa fa-search search-icon" style="font-size: 26px;"></i></div>
+                                        <div class="white-text" style="margin-top: -66px;margin-left: 51px; font-weight: 700; font-size: 18px;"><span style="color: #f26722;">go</span> karde</div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
 
@@ -65,8 +85,13 @@
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
-        <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
-
-
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+    <script>
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15 // Creates a dropdown of 15 years to control year
+        });
+    </script>
 </body>
 </html>

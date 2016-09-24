@@ -1,5 +1,9 @@
 .goLogo{
    height:auto;
-   width: 40%;
-   margin-top: -7px;
+    width: 53%;
+    margin-top: 6px;
+    margin-left: 12px;
+}
+.background-color{
+    background-color: whitesmoke;
 }

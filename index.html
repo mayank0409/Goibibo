@@ -2,40 +2,51 @@
 <html>
 <head>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="custom/css/goibibo.css">
+    <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css"
+          media="screen,projection"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
 </head>
 
-<body class="background-color">
+<body>
 
-    <nav class="white">
-        <div class="nav-wrapper">
-            <div class="row">
-                <div class="col s2 m2 l2">
-                    <a href="#" class="brand-logo">
-                        <img src="custom/images/goLogo.png" class="responsive-img goLogo">
-                    </a>
-                </div>
-                <div class="col s10 m10 l10 search-bar-background">
-                    <div class="search-bar">
-                        hello
-                    </div>
-                </div>
+<table class="highlight">
+    <thead class="highlight col s12 m12 l12">
+    <tr>
+        <th data-field="id">S. No.</th>
+        <th data-field="name">Buses</th>
+        <th data-field="price">Price</th>
+        <th data-field="type">Type</th>
+        <th data-field="available">Available</th>
+        <th data-field="front">Front</th>
+        <th data-field="middle">Middle</th>
+        <th data-field="last">Last</th>
+    </tr>
+    </thead>
 
-            </div>
+    <tbody>
+    <tr>
+        <td>1.</td>
+        <td>Super Express</td>
+        <td>&#8377;1000</td>
+        <td>Volvo</td>
+        <td>32</td>
+        <td>10</td>
+        <td>12</td>
+        <td>10</td>
+
+    </tr>
+    </tbody>
+</table>
 
 
-        </div>
-    </nav>
-
-
-
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+<script src="main.js"></script>
 
 </body>
 </html>

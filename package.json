@@ -1,0 +1,23 @@
+{
+  "name": "goibibo",
+  "version": "1.0.0",
+  "description": "goibibo bus seat recommendor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mayank0409/Goibibo.git"
+  },
+  "keywords": [
+    "goibibo",
+    "apis"
+  ],
+  "author": "mayank mahajan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mayank0409/Goibibo/issues"
+  },
+  "homepage": "https://github.com/mayank0409/Goibibo#readme"
+}

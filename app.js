@@ -18,12 +18,13 @@ app.get('/', function(req, res) {
 });
 
 app.get('/search-buses', function(req, res) {
-   var params = req.params.all;
-   params = {
-      'source': 'delhi',
-      'destination': 'jalandhar',
-      'dateofdeparture': '20160925'
-   };
+   var params = req.query;
+   console.log("input params:",params);
+   // params = {
+   //    'source': 'delhi',
+   //    'destination': 'jalandhar',
+   //    'dateofdeparture': '20160925'
+   // };
    return getBusDetails(params, function(buses) {
       res.send(buses);
    });

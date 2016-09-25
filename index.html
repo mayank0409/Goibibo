@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html  ng-app="busBooking" ng-controller="busCtrl">
+<html  ng-app="busBooking" ng-controller="busCtrl" class="preloader">
 <head>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="/custom/css/goibibo.css">
     <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -12,70 +13,139 @@
 
 <body class="background-color">
 
-
     <nav class="white">
         <div class="nav-wrapper">
             <div class="row">
-                <div class="col s2 m2 l2">
+                <span class="col-md-2 col-sm-2">
                     <a href="#" class="brand-logo">
                         <img src="custom/images/goLogo.png" class="responsive-img goLogo">
                     </a>
-                </div>
-                <div class="col s10 m10 l10 search-bar-background">
-                    <div class="search-bar">
+                </span>
+                <span class="col-sm-10 col-md-10 search-bar-background">
+                    <div class="search-bar col-md-12 no-padding">
                             <div class="row">
-                                <div class="input-field col s3">
+                                <span class="input-field col-md-2">
                                     <i class="fa fa-bus prefix"></i><i class="fa fa-arrow-left prefix" style="margin-left: 32px; font-size: 14px;"></i>
                                     <input placeholder="Source" id="source" ng-model="source" type="text" class="validate">
-                                </div>
-                                <div class="input-field col s3">
+                                </span>
+                                <span class="input-field col-md-2">
                                     <i class="fa fa-bus prefix"></i><i class="fa fa-arrow-right prefix" style="margin-left:32px; font-size: 14px;"></i>
                                     <input id="destination" ng-model="destination" type="text" class="validate" placeholder="Destination">
-                                </div>
-                                <div class="input-field col s3">
+                                </span>
+                                <span class="input-field col-md-2">
                                     <i class="fa fa-calendar prefix"></i>
-                                    <input type="date" class="datepicker" ng-model="dateofdeparture" placeholder="Journey Date">
-                                </div>
-                                <div class="input-field col s3 " ng-click="searchBuses()">
+                                    <input type="date" class="datepicker" placeholder="Journey Date" style="margin-left: 5px">
+                                </span>
+                                <span class="input-field col-md-2" ng-click="searchBuses()">
                                     <div class="search-circle-div">
                                         <div style="margin-top: -11px;margin-left: 9px;"><i class="fa fa-search search-icon" style="font-size: 26px;"></i></div>
                                         <div class="white-text" style="margin-top: -66px;margin-left: 51px; font-weight: 700; font-size: 18px;"><span style="color: #f26722;">go</span> karde</div>
                                     </div>
-                                </div>
+                                </span>
                             </div>
                     </div>
-                </div>
+                </span>
 
             </div>
 
 
         </div>
     </nav>
-
-    <table class="highlight">
+    <div id="preloader"></div>
+    <div class="col-md-12 no-padding" style="background: white" ng-if="buses.length > 0">
+        <span class="input-field col-md-3 col-md-offset-2" style="height: 100%;">
+            <i class="fa fa-child prefix" style="line-height: 36px;"></i>
+            <input type="text" class="number" ng-model="number" placeholder="Number of People">
+        </span>
+        <span class="input-field col-md-6 col-md-push-1" style="margin: 0; height: 100%; line-height: 36px;">
+            <span style="margin-top: 7px; position: absolute;">Type of Seats</span>
+            <span style="margin-left: 100px">
+                <span class="inline" style="margin-right: 25px;">
+                    <input type="checkbox" id="front" ng-click="toggleFront()"/>
+                    <label for="front" style="font-size: 13px; color: black;">Front</label>
+                </span>
+                <span class="inline" style="margin-right: 25px;" >
+                    <input type="checkbox" id="middle" ng-click="toggleMiddle()"/>
+                    <label for="middle" style="font-size: 13px; color: black;">Middle</label>
+                </span>
+                <span class="inline" style="margin-right: 25px;">
+                    <input type="checkbox" id="back" ng-click="toggleBack()"/>
+                    <label for="back" style="font-size: 13px; color: black;">Back</label>
+                </span>
+            </span>
+        </span>
+    </div>
+    <table class="highlight table table-response table-bordered table-hovered" style="background: white" ng-if="buses.length > 0">
         <thead class="highlight col s12 m12 l12">
         <tr>
-            <th data-field="id">S.No.</th>
-            <th data-field="name"><a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">Buses<span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span></a></th>
-            <th data-field="price"><a href="#" ng-click="sortType = 'totalFare'; sortReverse = !sortReverse">Price<span ng-show="sortType == 'totalFare' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'totalFare' && sortReverse" class="fa fa-caret-up"></span></a></th>
-            <th data-field="type"><a href="#" ng-click="sortType = 'BusType'; sortReverse = !sortReverse">Type<span ng-show="sortType == 'BusType' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'BusType' && sortReverse" class="fa fa-caret-up"></span></a></th>
-            <th data-field="available" style="color: #039be5">Available</th>
-            <th data-field="front" style="color: #039be5">Front</th>
-            <th data-field="middle" style="color: #039be5">Middle</th>
-            <th data-field="last" style="color: #039be5">Last</th>
+            <th data-field="name">
+                <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                    Buses
+                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th data-field="price">
+                <a href="#" ng-click="sortType = 'totalFare'; sortReverse = !sortReverse">
+                    Price
+                    <span ng-show="sortType == 'totalFare' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'totalFare' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th data-field="type">
+                <a href="#" ng-click="sortType = 'BusType'; sortReverse = !sortReverse">
+                    Type
+                    <span ng-show="sortType == 'BusType' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'BusType' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th data-field="depdate">
+                <a href="#" ng-click="sortType = 'depdate'; sortReverse = !sortReverse">
+                    Departure
+                    <span ng-show="sortType == 'depdate' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'depdate' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th data-field="arrdate">
+                <a href="#" ng-click="sortType = 'arrdate'; sortReverse = !sortReverse">
+                    Arrival
+                    <span ng-show="sortType == 'arrdate' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'arrdate' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <!--<th data-field="available" style="color: #039be5">Available</th>-->
+            <th data-field="{{front.available}}" style="color: #039be5">
+                <a href="#" ng-click="sortType = 'front.available'; sortReverse = !sortReverse">
+                    Front
+                    <span ng-show="sortType == 'front.available' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'front.available' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th data-field="{{middle.available}}" style="color: #039be5">
+                <a href="#" ng-click="sortType = 'middle.available'; sortReverse = !sortReverse">
+                    Middle
+                    <span ng-show="sortType == 'middle.available' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'middle.available' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th data-field="{{back.available}}" style="color: #039be5">
+                <a href="#" ng-click="sortType = 'back.available'; sortReverse = !sortReverse">
+                    Back
+                    <span ng-show="sortType == 'back.available' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'back.available' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
         </tr>
         </thead>
 
         <tbody>
-        <tr ng-repeat="bus in buses | orderBy:sortType:sortReverse | filter:searchFish">
-            <td>{{buses.indexOf(bus)+1}}</td>
+        <tr ng-repeat="bus in buses | orderBy:sortType:sortReverse | filter:searchFish" ng-if="filterTypeOfSeats(bus)">
             <td>{{bus.TravelsName}}</td>
             <td>{{bus.totalFare}}</td>
             <td>{{bus.BusType}}</td>
-            <td>{{bus.front.available+bus.middle.available+bus.back.available}}</td>
+            <td>{{formatDate(bus.depdate)}}</td>
+            <td>{{formatDate(bus.arrdate)}}</td>
+            <!--<td>{{ bus.front.available+bus.middle.available+bus.back.available}}</td>-->
             <td>{{bus.front.available}}</td>
             <td>{{bus.middle.available}}</td>
             <td>{{bus.back.available}}</td>
@@ -86,7 +156,7 @@
 
 
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="/materialize/dist/js/materialize.min.js"></script>
     <script type="text/javascript" src="/moment/min/moment.min.js"></script>
     <script>

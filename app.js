@@ -1,17 +1,20 @@
 var express = require('express'),
     _ = require('lodash'),
     async = require('async'),
+    path = require('path'),
     app = express(),
     format = 'json',
     app_id = 'c59b455b',
     limit = 5,
     app_key = 'f652013eb672d6cb772ba67240bc798e';
 
+app.use(express.static('public'));
+
 app.listen(8080, function () {
    console.log('Server listening on port 8080');
 });
 app.get('/', function(req, res) {
-   res.send('hello world');
+   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 app.get('/search-buses', function(req, res) {

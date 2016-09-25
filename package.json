@@ -21,6 +21,10 @@
   },
   "homepage": "https://github.com/mayank0409/Goibibo#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "async": "^2.0.1",
+    "express": "^4.14.0",
+    "http": "0.0.0",
+    "lodash": "^3.10.1",
+    "request": "^2.75.0"
   }
 }

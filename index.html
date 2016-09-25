@@ -10,7 +10,7 @@
 </head>
 
 <body class="background-color">
-<p>{{myWelcome}}</p>
+
 
     <nav class="white">
         <div class="nav-wrapper">
@@ -35,19 +35,22 @@
     <table class="highlight">
         <thead class="highlight col s12 m12 l12">
         <tr>
-            <th data-field="id">S. No.</th>
-            <th data-field="name">Buses</th>
-            <th data-field="price">Price</th>
-            <th data-field="type">Type</th>
-            <th data-field="available">Available</th>
-            <th data-field="front">Front</th>
-            <th data-field="middle">Middle</th>
-            <th data-field="last">Last</th>
+            <th data-field="id">S.No.</th>
+            <th data-field="name"><a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">Buses<span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span></a></th>
+            <th data-field="price"><a href="#" ng-click="sortType = 'totalFare'; sortReverse = !sortReverse">Price<span ng-show="sortType == 'totalFare' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'totalFare' && sortReverse" class="fa fa-caret-up"></span></a></th>
+            <th data-field="type"><a href="#" ng-click="sortType = 'BusType'; sortReverse = !sortReverse">Type<span ng-show="sortType == 'BusType' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'BusType' && sortReverse" class="fa fa-caret-up"></span></a></th>
+            <th data-field="available" style="color: #039be5">Available</th>
+            <th data-field="front" style="color: #039be5">Front</th>
+            <th data-field="middle" style="color: #039be5">Middle</th>
+            <th data-field="last" style="color: #039be5">Last</th>
         </tr>
         </thead>
 
-        <tbody ng-repeat="bus in buses">
-        <tr>
+        <tbody>
+        <tr ng-repeat="bus in buses | orderBy:sortType:sortReverse | filter:searchFish">
             <td>{{buses.indexOf(bus)+1}}</td>
             <td>{{bus.TravelsName}}</td>
             <td>{{bus.totalFare}}</td>

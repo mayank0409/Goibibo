@@ -22,5 +22,10 @@ app.controller('busCtrl', function($scope, $http) {
         });
 
 
+    $scope.searchBuses = function(){
+        console.log($scope.source, $scope.destination, $scope.dateofdeparture);
+    }
+    
+    
 });
 

@@ -26,17 +26,17 @@
                             <div class="row">
                                 <div class="input-field col s3">
                                     <i class="fa fa-bus prefix"></i><i class="fa fa-arrow-left prefix" style="margin-left: 32px; font-size: 14px;"></i>
-                                    <input placeholder="source" id="source" name="source" type="text" class="validate">
+                                    <input placeholder="Source" id="source" ng-model="source" type="text" class="validate">
                                 </div>
                                 <div class="input-field col s3">
                                     <i class="fa fa-bus prefix"></i><i class="fa fa-arrow-right prefix" style="margin-left:32px; font-size: 14px;"></i>
-                                    <input id="destination" name="destination" type="text" class="validate" placeholder="destination">
+                                    <input id="destination" ng-model="destination" type="text" class="validate" placeholder="Destination">
                                 </div>
                                 <div class="input-field col s3">
                                     <i class="fa fa-calendar prefix"></i>
-                                    <input type="date" class="datepicker" name="dateofdeparture" placeholder="journey_date">
+                                    <input type="date" class="datepicker" ng-model="dateofdeparture" placeholder="Journey Date">
                                 </div>
-                                <div class="input-field col s3 ">
+                                <div class="input-field col s3 " ng-click="searchBuses()">
                                     <div class="search-circle-div">
                                         <div style="margin-top: -11px;margin-left: 9px;"><i class="fa fa-search search-icon" style="font-size: 26px;"></i></div>
                                         <div class="white-text" style="margin-top: -66px;margin-left: 51px; font-weight: 700; font-size: 18px;"><span style="color: #f26722;">go</span> karde</div>
@@ -88,7 +88,6 @@
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/materialize/dist/js/materialize.min.js"></script>
-    <script type="text/javascript" src="/angular/angular.min.js"></script>
     <script type="text/javascript" src="/moment/min/moment.min.js"></script>
     <script>
         $('.datepicker').pickadate({
